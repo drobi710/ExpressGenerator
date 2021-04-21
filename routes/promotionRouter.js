@@ -33,16 +33,16 @@ promotionRouter
 
   .delete((req, res, next) => {
     Promotion.deleteMany()
-      .then((response) => {
+      .then((res) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.json(response);
+        res.json(res);
       })
       .catch((err) => next(err));
   });
 
 promotionRouter
-  .route("/:promotionId")
+  .route("/:promotionId") // wildcard syntax, create a key value pair (value being )
   .get((req, res, next) => {
     Promotion.findById(req.params.promotionId)
       .then((promotion) => {
@@ -78,10 +78,10 @@ promotionRouter
 
   .delete((req, res, next) => {
     Promotion.findByIdAndDelete(req.params.promotionId)
-      .then((response) => {
+      .then((res) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.json(response);
+        res.json(res);
       })
       .catch((err) => next(err));
   });
